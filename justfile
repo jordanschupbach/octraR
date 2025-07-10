@@ -4,10 +4,10 @@
 all: build
 
 build:
-	R CMD INSTALL --build --preclean .
+	R CMD INSTALL --build --preclean . -l $HOME/R/library
 
 install: build
-	R CMD INSTALL --build .
+	R CMD INSTALL --build . -l $HOME/R/library
 
 clean:
 	rm -f ./src/*.o
