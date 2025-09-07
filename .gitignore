@@ -1,3 +1,4 @@
 octrar_*.tar.gz
 *.so
 *.o
+.direnv/
