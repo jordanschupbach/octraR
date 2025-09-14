@@ -185,6 +185,30 @@ function(from) {if (!is.null(from$"__str__")) from$"__str__"()})
 suppressMessages(suppressWarnings(setMethod('print', 'ExternalReference',
 function(x) {print(as(x, "character"))})))
 
+# Start of gcd
+
+`gcd` = function(x, y, .copy = FALSE)
+{
+  x = as.integer(x);
+  
+  if(length(x) > 1) {
+    warning("using only the first element of x");
+  };
+  
+  y = as.integer(y);
+  
+  if(length(y) > 1) {
+    warning("using only the first element of y");
+  };
+  
+  ;.Call('R_swig_gcd', x, y, as.logical(.copy), PACKAGE='octrar');
+  
+}
+
+attr(`gcd`, 'returnType') = 'integer'
+attr(`gcd`, "inputTypes") = c('integer', 'integer')
+class(`gcd`) = c("SWIGFunction", class('gcd'))
+
 # Start of Circle_m_radius_set
 
 `Circle_m_radius_set` = function(self, s_m_radius)

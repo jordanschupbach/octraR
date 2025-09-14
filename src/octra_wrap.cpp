@@ -1704,6 +1704,32 @@ extern "C" {
 #endif
 
 SWIGEXPORT SEXP
+R_swig_gcd ( SEXP x, SEXP y, SEXP s_swig_copy)
+{
+  {
+    int result;
+    int arg1 ;
+    int arg2 ;
+    unsigned int r_nprotect = 0;
+    SEXP r_ans = R_NilValue ;
+    VMAXTYPE r_vmax = vmaxget() ;
+    
+    arg1 = static_cast< int >(INTEGER(x)[0]);
+    arg2 = static_cast< int >(INTEGER(y)[0]);
+    result = (int)gcd(arg1,arg2);
+    r_ans = Rf_ScalarInteger(result);
+    vmaxset(r_vmax);
+    if(r_nprotect)  Rf_unprotect(r_nprotect);
+    
+    return r_ans;
+    fail: SWIGUNUSED;
+  }
+  Rf_error("%s %s", SWIG_ErrorType(SWIG_lasterror_code), SWIG_lasterror_msg);
+  return R_NilValue;
+}
+
+
+SWIGEXPORT SEXP
 R_swig_Circle_m_radius_set ( SEXP self, SEXP s_m_radius)
 {
   {
@@ -2324,6 +2350,7 @@ extern "C" {
 SWIGINTERN R_CallMethodDef CallEntries[] = {
    {"R_swig_Circle_area", (DL_FUNC) &R_swig_Circle_area, 2},
    {"R_swig_Circle_m_radius_set", (DL_FUNC) &R_swig_Circle_m_radius_set, 2},
+   {"R_swig_gcd", (DL_FUNC) &R_swig_gcd, 3},
    {"R_swig_Circle_m_radius_get", (DL_FUNC) &R_swig_Circle_m_radius_get, 2},
    {"R_swig_new_Circle", (DL_FUNC) &R_swig_new_Circle, 1},
    {"R_swig_Circle_perimeter", (DL_FUNC) &R_swig_Circle_perimeter, 2},
